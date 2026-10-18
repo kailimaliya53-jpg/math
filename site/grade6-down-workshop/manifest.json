@@ -1,0 +1,30 @@
+{
+  "name": "六年级下册数学知识点汇总",
+  "short_name": "六年级数学",
+  "description": "根据人教版六年级下册数学教材编写，涵盖负数、圆柱与圆锥、比例、统计与概率、数学思考、整理和复习六大章节。",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FAFAFA",
+  "theme_color": "#FBBF24",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "education",
+    "books"
+  ],
+  "lang": "zh-CN",
+  "dir": "ltr"
+}

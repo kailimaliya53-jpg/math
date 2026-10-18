@@ -1,0 +1,30 @@
+{
+  "name": "五年级下册数学知识点汇总",
+  "short_name": "五年级数学",
+  "description": "根据人教版五年级下册数学教材编写，涵盖观察物体、因数与倍数、长方体和正方体、分数的意义和性质、图形的运动、分数的加法和减法、折线统计图、数学广角八大章节。",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FAFAFA",
+  "theme_color": "#FBBF24",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "education",
+    "books"
+  ],
+  "lang": "zh-CN",
+  "dir": "ltr"
+}

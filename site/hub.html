@@ -1,414 +1,365 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数学小教室 — 免费在线口算练习与知识点学习</title>
-  <meta name="description" content="轻量级小学知识点交互学习网站集合，涵盖数学、语文、英语多学科基础内容。专为家长、授课老师及小学生打造。">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏫</text></svg>">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数学小教室 — 小学数学 1~6 年级知识点、口算练习与在线考试</title>
+<meta name="description" content="人教版小学数学 1~6 年级 12 册知识点汇总（243 个知识点）、口算题自动生成、在线考试与错题本，另附语文、英语基础站。纯静态、免登录、免费使用。">
+<meta name="keywords" content="小学数学,数学知识点,人教版,口算练习,口算题生成,在线考试,错题本,一年级,二年级,三年级,四年级,五年级,六年级">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://math.91stocks.com/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+<meta name="theme-color" content="#FBBF24">
+<meta property="og:title" content="数学小教室 — 小学数学免费在线练习">
+<meta property="og:description" content="人教版 1~6 年级 12 册知识点、口算练习、在线考试，全部免费。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://math.91stocks.com/">
+<meta property="og:locale" content="zh_CN">
+<style>
+  :root {
+    --bg: #FAFAFA;
+    --card: #FFFFFF;
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --text-hint: #9CA3AF;
+    --border: #E5E7EB;
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 56px 20px 40px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1000px; margin: 0 auto; }
 
-    :root {
-      --bg: #F9F7F4;
-      --surface: #FFFFFF;
-      --border: rgba(0,0,0,0.08);
-      --border-hover: rgba(0,0,0,0.16);
-      --text-primary: #1A1A1A;
-      --text-secondary: #6B6B6B;
-      --text-hint: #9E9E9E;
-      --radius: 16px;
-      --radius-sm: 10px;
-    }
+  /* ── Header ── */
+  .header { text-align: center; margin-bottom: 40px; }
+  .badge {
+    display: inline-block; background: #fff; border: 1px solid var(--border);
+    border-radius: 100px; padding: 4px 14px; font-size: 13px;
+    color: var(--text-secondary); margin-bottom: 20px;
+  }
+  .header h1 { font-size: clamp(28px, 6vw, 42px); font-weight: 700; line-height: 1.15; margin-bottom: 14px; letter-spacing: -0.02em; }
+  .header h1 span { color: #888; font-weight: 400; }
+  .header p { font-size: 16px; color: var(--text-secondary); line-height: 1.7; max-width: 560px; margin: 0 auto; }
+  .stats {
+    max-width: 460px; margin: 28px auto 0; display: flex;
+    background: #fff; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden;
+  }
+  .stat { flex: 1; padding: 14px 8px; text-align: center; border-right: 1px solid var(--border); }
+  .stat:last-child { border-right: none; }
+  .stat-value { font-size: 22px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+  .stat-label { font-size: 12px; color: var(--text-hint); }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
-      background: var(--bg);
-      color: var(--text-primary);
-      min-height: 100vh;
-      padding: 0 16px 60px;
-    }
+  /* ── Sections ── */
+  .section-label {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-hint);
+    margin: 40px 0 16px;
+  }
+  .section-note { font-size: 13px; color: var(--text-hint); margin: -8px 0 16px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } body { padding: 32px 14px; } }
 
-    /* ── Header ── */
-    .header {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 56px 0 48px;
-      text-align: center;
-    }
-    .header-badge {
-      display: inline-block;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 4px 14px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      letter-spacing: 0.02em;
-      margin-bottom: 20px;
-    }
-    .header h1 {
-      font-size: clamp(28px, 6vw, 42px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      margin-bottom: 14px;
-      color: var(--text-primary);
-    }
-    .header h1 span {
-      color: #888;
-      font-weight: 400;
-    }
-    .header p {
-      font-size: 16px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      max-width: 440px;
-      margin: 0 auto;
-    }
+  .card {
+    position: relative; display: block; background: var(--card);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px; text-decoration: none; color: inherit;
+    overflow: hidden; transition: transform .15s, box-shadow .15s, border-color .15s;
+  }
+  .card::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--c); opacity: .9;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.07); border-color: var(--c); }
+  .card-icon {
+    width: 40px; height: 40px; border-radius: 10px; background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 12px;
+  }
+  .card-subject { font-size: 12px; font-weight: 600; color: var(--c); margin-bottom: 6px; }
+  .card-title { font-size: 17px; font-weight: 700; line-height: 1.35; margin-bottom: 8px; }
+  .card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 14px; }
+  .card-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .tag { font-size: 11px; padding: 3px 9px; border-radius: 100px; background: var(--bg); color: var(--c); white-space: nowrap; }
+  .card-cta { font-size: 13px; font-weight: 600; color: var(--c); display: flex; align-items: center; gap: 4px; }
+  .card-cta::after { content: "→"; transition: transform .15s; }
+  .card:hover .card-cta::after { transform: translateX(3px); }
 
-    /* ── Stats ── */
-    .stats {
-      max-width: 400px;
-      margin: 32px auto 0;
-      display: flex;
-      gap: 0;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-    }
-    .stat {
-      flex: 1;
-      padding: 14px 8px;
-      text-align: center;
-      border-right: 1px solid var(--border);
-    }
-    .stat:last-child { border-right: none; }
-    .stat-value {
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .stat-label {
-      font-size: 12px;
-      color: var(--text-hint);
-    }
-
-    /* ── Section Label ── */
-    .section-label {
-      max-width: 680px;
-      margin: 0 auto 16px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-hint);
-    }
-
-    /* ── Grid ── */
-    .grid {
-      max-width: 680px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-    @media (max-width: 480px) {
-      .grid { grid-template-columns: 1fr; }
-    }
-
-    /* ── Card ── */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--card-color);
-      border-radius: var(--radius) var(--radius) 0 0;
-      opacity: 0;
-      transition: opacity 0.15s;
-    }
-    .card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
-    }
-    .card:hover::before { opacity: 1; }
-
-    .card-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--card-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      margin-bottom: 16px;
-      flex-shrink: 0;
-    }
-    .card-subject {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--card-color);
-      margin-bottom: 6px;
-    }
-    .card-title {
-      font-size: 17px;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 10px;
-      color: var(--text-primary);
-    }
-    .card-desc {
-      font-size: 13.5px;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      flex: 1;
-      margin-bottom: 18px;
-    }
-    .card-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 16px;
-    }
-    .tag {
-      font-size: 11.5px;
-      padding: 3px 9px;
-      border-radius: 100px;
-      background: var(--card-bg);
-      color: var(--card-color);
-      font-weight: 500;
-      white-space: nowrap;
-    }
-    .card-cta {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--card-color);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .card-cta::after {
-      content: "→";
-      transition: transform 0.15s;
-    }
-    .card:hover .card-cta::after { transform: translateX(3px); }
-
-    /* ── Color themes ── */
-    .card-math {
-      --card-color: #B45309;
-      --card-bg: #FEF3C7;
-    }
-    .card-chinese {
-      --card-color: #B91C1C;
-      --card-bg: #FEE2E2;
-    }
-    .card-english-workshop {
-      --card-color: #1D4ED8;
-      --card-bg: #DBEAFE;
-    }
-    .card-english-site {
-      --card-color: #6D28D9;
-      --card-bg: #EDE9FE;
-    }
-    .card-kousuan {
-      --card-color: #047857;
-      --card-bg: #D1FAE5;
-    }
-    .card-exam {
-      --card-color: #0E7490;
-      --card-bg: #CFFAFE;
-    }
-    .card-grade2 {
-      --card-color: #BE185D;
-      --card-bg: #FCE7F3;
-    }
-
-    /* ── Footer ── */
-    .footer {
-      max-width: 680px;
-      margin: 48px auto 0;
-      text-align: center;
-      font-size: 13px;
-      color: var(--text-hint);
-      line-height: 1.8;
-    }
-    .footer a {
-      color: var(--text-secondary);
-      text-decoration: none;
-    }
-    .footer a:hover { text-decoration: underline; }
-    .footer-divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin-bottom: 24px;
-    }
-  </style>
+  /* ── Footer ── */
+  .footer { margin-top: 56px; text-align: center; font-size: 13px; color: var(--text-hint); line-height: 1.9; }
+  .footer hr { border: none; border-top: 1px solid var(--border); margin-bottom: 24px; }
+  .footer a { color: var(--text-secondary); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+</style>
 </head>
 <body>
+<div class="wrap">
 
-<header class="header">
-  <div class="header-badge">🏫 小学数学 · 课后自学</div>
-  <h1>数学小教室 <span>· 免费在线练习</span></h1>
-  <p>小学数学知识点、口算练习、在线考试一站式入口，另附语文、英语基础站。纯静态、免登录、免费使用，学习进度保存在本地浏览器。</p>
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-value">7</div>
-      <div class="stat-label">学习站点</div>
+  <header class="header">
+    <div class="badge">🧮 小学数学 · 1~6 年级全免费</div>
+    <h1>数学小教室 <span>· 免费在线练习</span></h1>
+    <p>人教版小学数学 1~6 年级 12 册知识点汇总，加上口算题自动生成、在线考试与错题本。纯静态、免登录、无广告，学习进度保存在你自己的浏览器里。</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-value">12</div><div class="stat-label">数学分册</div></div>
+      <div class="stat"><div class="stat-value">243</div><div class="stat-label">知识点</div></div>
+      <div class="stat"><div class="stat-value">17</div><div class="stat-label">学习站点</div></div>
+      <div class="stat"><div class="stat-value">免费</div><div class="stat-label">免登录</div></div>
     </div>
-    <div class="stat">
-      <div class="stat-value">3</div>
-      <div class="stat-label">覆盖学科</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">1200+</div>
-      <div class="stat-label">知识点/词汇/题</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">零</div>
-      <div class="stat-label">安装依赖</div>
-    </div>
-  </div>
-</header>
+  </header>
 
-<p class="section-label">全部站点</p>
+  <p class="section-label">数学知识点 · 人教版 1~6 年级</p>
+  <p class="section-note">每册都有「学习 / 闪卡 / 索引 / 进度」四种模式，含知识点讲解、生活实例和自测小题。</p>
+  <div class="grid">
 
-<div class="grid">
-
-  <!-- 数学 -->
-  <a class="card card-math" href="./index.html">
+  <a class="card" style="--c:#B45309; --bg:#FEF3C7" href="/grade1-up/">
     <div class="card-icon">🔢</div>
-    <div class="card-subject">数学 · 一年级下册</div>
-    <div class="card-title">数学知识点<br>汇总工坊</div>
-    <div class="card-desc">23 个知识点覆盖人教版一年级下册五大章节：认识图形、退位减法、分类整理、100以内数、人民币。</div>
+    <div class="card-subject">数学 · 一年级上册</div>
+    <div class="card-title">一年级上册<br>数学知识点</div>
+    <div class="card-desc">人教版 一年级上册 全册：准备课～总复习 等 9 个章节，共 17 个知识点，含闪卡复习、渐进学习、进度记录与自测小测。</div>
     <div class="card-meta">
-      <span class="tag">23 知识点</span>
-      <span class="tag">渐进学习</span>
-      <span class="tag">PWA</span>
+        <span class="tag">17 个知识点</span>
+        <span class="tag">9 个章节</span>
+        <span class="tag">闪卡</span>
     </div>
     <div class="card-cta">进入站点</div>
   </a>
 
-  <!-- 语文 -->
-  <a class="card card-chinese" href="./chinese/index.html">
+  <a class="card" style="--c:#B45309; --bg:#FEF3C7" href="/grade1-down/">
+    <div class="card-icon">📐</div>
+    <div class="card-subject">数学 · 一年级下册</div>
+    <div class="card-title">一年级下册<br>数学知识点</div>
+    <div class="card-desc">人教版 一年级下册 全册：认识图形～认识人民币 等 5 个章节，共 23 个知识点，含闪卡复习、渐进学习、进度记录与自测小测。</div>
+    <div class="card-meta">
+        <span class="tag">23 个知识点</span>
+        <span class="tag">5 个章节</span>
+        <span class="tag">闪卡</span>
+    </div>
+    <div class="card-cta">进入站点</div>
+  </a>
+
+  <a class="card" style="--c:#BE185D; --bg:#FCE7F3" href="/grade2-up/">
+    <div class="card-icon">📏</div>
+    <div class="card-subject">数学 · 二年级上册</div>
+    <div class="card-title">二年级上册<br>数学知识点</div>
+    <div class="card-desc">人教版 二年级上册 全册：长度单位～数学广角——搭配 等 8 个章节，共 20 个知识点，含闪卡复习、渐进学习、进度记录与自测小测。</div>
+    <div class="card-meta">
+        <span class="tag">20 个知识点</span>
+        <span class="tag">8 个章节</span>
+        <span class="tag">闪卡</span>
+    </div>
+    <div class="card-cta">进入站点</div>
+  </a>
+
+  <a class="card" style="--c:#BE185D; --bg:#FCE7F3" href="/grade2-down/">
+    <div class="card-icon">📊</div>
+    <div class="card-subject">数学 · 二年级下册</div>
+    <div class="card-title">二年级下册<br>数学知识点</div>
+    <div class="card-desc">人教版 二年级下册 全册：数据收集整理～总复习 等 10 个章节，共 17 个知识点，含闪卡复习、渐进学习、进度记录与自测小测。</div>
+    <div class="card-meta">
+        <span class="tag">17 个知识点</span>
+        <span class="tag">10 个章节</span>
+        <span class="tag">闪卡</span>
+    </div>
+    <div class="card-cta">进入站点</div>
+  </a>
+
+  <a class="card" style="--c:#047857; --bg:#D1FAE5" href="/grade3-up/">
+    <div class="card-icon">⏱️</div>
+    <div class="card-subject">数学 · 三年级上册</div>
+    <div class="card-title">三年级上册<br>数学知识点</div>
+    <div class="card-desc">人教版 三年级上册 全册：时、分、秒～数学广角——集合 等 9 个章节，共 23 个知识点，含闪卡复习、渐进学习、进度记录与自测小测。</div>
+    <div class="card-meta">
+        <span class="tag">23 个知识点</span>
+        <span class="tag">9 个章节</span>
+        <span class="tag">闪卡</span>
+    </div>
+    <div class="card-cta">进入站点</div>
+  </a>
+
+  <a class="card" style="--c:#047857; --bg:#D1FAE5" href="/grade3-down/">
+    <div class="card-icon">🧭</div>
+    <div class="card-subject">数学 · 三年级下册</div>
+    <div class="card-title">三年级下册<br>数学知识点</div>
+    <div class="card-desc">人教版 三年级下册 全册：位置与方向～数学广角——搭配 等 8 个章节，共 21 个知识点，含闪卡复习、渐进学习、进度记录与自测小测。</div>
+    <div class="card-meta">
+        <span class="tag">21 个知识点</span>
+        <span class="tag">8 个章节</span>
+        <span class="tag">闪卡</span>
+    </div>
+    <div class="card-cta">进入站点</div>
+  </a>
+
+  <a class="card" style="--c:#1D4ED8; --bg:#DBEAFE" href="/grade4-up/">
+    <div class="card-icon">🔢</div>
+    <div class="card-subject">数学 · 四年级上册</div>
+    <div class="card-title">四年级上册<br>数学知识点</div>
+    <div class="card-desc">人教版 四年级上册 全册：大数的认识～数学广角——优化 等 8 个章节，共 21 个知识点，含闪卡复习、渐进学习、进度记录与自测小测。</div>
+    <div class="card-meta">
+        <span class="tag">21 个知识点</span>
+        <span class="tag">8 个章节</span>
+        <span class="tag">闪卡</span>
+    </div>
+    <div class="card-cta">进入站点</div>
+  </a>
+
+  <a class="card" style="--c:#1D4ED8; --bg:#DBEAFE" href="/grade4-down/">
+    <div class="card-icon">🧮</div>
+    <div class="card-subject">数学 · 四年级下册</div>
+    <div class="card-title">四年级下册<br>数学知识点</div>
+    <div class="card-desc">人教版 四年级下册 全册：四则运算～数学广角——鸡兔同笼 等 9 个章节，共 22 个知识点，含闪卡复习、渐进学习、进度记录与自测小测。</div>
+    <div class="card-meta">
+        <span class="tag">22 个知识点</span>
+        <span class="tag">9 个章节</span>
+        <span class="tag">闪卡</span>
+    </div>
+    <div class="card-cta">进入站点</div>
+  </a>
+
+  <a class="card" style="--c:#6D28D9; --bg:#EDE9FE" href="/grade5-up/">
+    <div class="card-icon">✖️</div>
+    <div class="card-subject">数学 · 五年级上册</div>
+    <div class="card-title">五年级上册<br>数学知识点</div>
+    <div class="card-desc">人教版 五年级上册 全册：小数乘法～数学广角——植树问题 等 7 个章节，共 22 个知识点，含闪卡复习、渐进学习、进度记录与自测小测。</div>
+    <div class="card-meta">
+        <span class="tag">22 个知识点</span>
+        <span class="tag">7 个章节</span>
+        <span class="tag">闪卡</span>
+    </div>
+    <div class="card-cta">进入站点</div>
+  </a>
+
+  <a class="card" style="--c:#6D28D9; --bg:#EDE9FE" href="/grade5-down/">
+    <div class="card-icon">👀</div>
+    <div class="card-subject">数学 · 五年级下册</div>
+    <div class="card-title">五年级下册<br>数学知识点</div>
+    <div class="card-desc">人教版 五年级下册 全册：观察物体～数学广角——找次品 等 8 个章节，共 19 个知识点，含闪卡复习、渐进学习、进度记录与自测小测。</div>
+    <div class="card-meta">
+        <span class="tag">19 个知识点</span>
+        <span class="tag">8 个章节</span>
+        <span class="tag">闪卡</span>
+    </div>
+    <div class="card-cta">进入站点</div>
+  </a>
+
+  <a class="card" style="--c:#B91C1C; --bg:#FEE2E2" href="/grade6-up/">
+    <div class="card-icon">✖️</div>
+    <div class="card-subject">数学 · 六年级上册</div>
+    <div class="card-title">六年级上册<br>数学知识点</div>
+    <div class="card-desc">人教版 六年级上册 全册：分数乘法～数学广角——数与形 等 8 个章节，共 22 个知识点，含闪卡复习、渐进学习、进度记录与自测小测。</div>
+    <div class="card-meta">
+        <span class="tag">22 个知识点</span>
+        <span class="tag">8 个章节</span>
+        <span class="tag">闪卡</span>
+    </div>
+    <div class="card-cta">进入站点</div>
+  </a>
+
+  <a class="card" style="--c:#B91C1C; --bg:#FEE2E2" href="/grade6-down/">
+    <div class="card-icon">🌡️</div>
+    <div class="card-subject">数学 · 六年级下册</div>
+    <div class="card-title">六年级下册<br>数学知识点</div>
+    <div class="card-desc">人教版 六年级下册 全册：负数～整理和复习 等 6 个章节，共 16 个知识点，含闪卡复习、渐进学习、进度记录与自测小测。</div>
+    <div class="card-meta">
+        <span class="tag">16 个知识点</span>
+        <span class="tag">6 个章节</span>
+        <span class="tag">闪卡</span>
+    </div>
+    <div class="card-cta">进入站点</div>
+  </a>
+
+  </div>
+
+  <p class="section-label">练习与考试</p>
+  <div class="grid">
+
+  <a class="card" style="--c:#0F766E; --bg:#CCFBF1" href="./kousuan/">
+    <div class="card-icon">✏️</div>
+    <div class="card-subject">数学 · 口算练习</div>
+    <div class="card-title">口算题<br>自动生成</div>
+    <div class="card-desc">加减乘除自由出题：运算步数、进退位、余数、结果范围都能调，一键生成可打印的练习卷。</div>
+    <div class="card-meta">
+        <span class="tag">自定义难度</span>
+        <span class="tag">可打印</span>
+        <span class="tag">无限出题</span>
+    </div>
+    <div class="card-cta">进入站点</div>
+  </a>
+
+  <a class="card" style="--c:#334155; --bg:#E2E8F0" href="./exam/">
+    <div class="card-icon">📝</div>
+    <div class="card-subject">数学 · 考试与错题本</div>
+    <div class="card-title">在线考试<br>与错题本</div>
+    <div class="card-desc">各年级分册题库、4 大知识领域、378 个三级考点，支持自动阅卷、组卷打印、错题本复习与成绩报表。</div>
+    <div class="card-meta">
+        <span class="tag">378 考点</span>
+        <span class="tag">自动阅卷</span>
+        <span class="tag">错题本</span>
+    </div>
+    <div class="card-cta">进入站点</div>
+  </a>
+
+  <a class="card" style="--c:#9A3412; --bg:#FFEDD5" href="./chinese/">
     <div class="card-icon">📜</div>
     <div class="card-subject">语文 · 一年级下册</div>
     <div class="card-title">语文知识点<br>学习网站</div>
     <div class="card-desc">六大模块：古诗文、课文背诵、日积月累、词语积累、近反义词、句式仿写，附闪卡复习功能。</div>
     <div class="card-meta">
-      <span class="tag">7 首古诗</span>
-      <span class="tag">10 篇课文</span>
-      <span class="tag">闪卡</span>
+        <span class="tag">7 首古诗</span>
+        <span class="tag">10 篇课文</span>
+        <span class="tag">闪卡</span>
     </div>
     <div class="card-cta">进入站点</div>
   </a>
 
-  <!-- 英语工坊 -->
-  <a class="card card-english-workshop" href="./english-workshop/index.html">
-    <div class="card-icon">🌐</div>
-    <div class="card-subject">英语 · 基础词汇</div>
-    <div class="card-title">Basic English<br>核心词工坊</div>
-    <div class="card-desc">Ogden 850 核心词体系，拆解为 30 个学习单元：操作词、方向词、主题词汇、造词法，系统覆盖。</div>
-    <div class="card-meta">
-      <span class="tag">850 词</span>
-      <span class="tag">30 单元</span>
-      <span class="tag">PWA</span>
-    </div>
-    <div class="card-cta">进入站点</div>
-  </a>
-
-  <!-- 英语 850 -->
-  <a class="card card-english-site" href="./english-basic/index.html">
+  <a class="card" style="--c:#4F46E5; --bg:#E0E7FF" href="./english-basic/">
     <div class="card-icon">📖</div>
     <div class="card-subject">英语 · 词汇练习</div>
     <div class="card-title">Basic 850<br>词汇学习站</div>
     <div class="card-desc">850 词按 5 类浏览，含 18 个核心操作动词讲解、6 种句型造句练习，附闪卡与进度记录。</div>
     <div class="card-meta">
-      <span class="tag">850 词汇表</span>
-      <span class="tag">造句练习</span>
-      <span class="tag">语音朗读</span>
+        <span class="tag">850 词汇表</span>
+        <span class="tag">造句练习</span>
+        <span class="tag">语音朗读</span>
     </div>
     <div class="card-cta">进入站点</div>
   </a>
 
-  <!-- 口算练习 -->
-  <a class="card card-kousuan" href="./kousuan/">
-    <div class="card-icon">✏️</div>
-    <div class="card-subject">数学 · 口算练习</div>
-    <div class="card-title">口算题<br>自动生成</div>
-    <div class="card-desc">加减乘除自由出题：运算步数、进退位、余数、结果范围都能调，一键生成可打印的练习卷，答案另附。</div>
+  <a class="card" style="--c:#0369A1; --bg:#E0F2FE" href="./english-workshop/">
+    <div class="card-icon">🌐</div>
+    <div class="card-subject">英语 · 基础词汇</div>
+    <div class="card-title">Basic English<br>核心词工坊</div>
+    <div class="card-desc">Ogden 850 核心词体系，拆解为 30 个学习单元：操作词、方向词、主题词汇、造词法，系统覆盖。</div>
     <div class="card-meta">
-      <span class="tag">自定义难度</span>
-      <span class="tag">可打印</span>
-      <span class="tag">无限出题</span>
+        <span class="tag">850 词</span>
+        <span class="tag">30 单元</span>
     </div>
     <div class="card-cta">进入站点</div>
   </a>
 
-  <!-- 二年级上册 -->
-  <a class="card card-grade2" href="./grade2/">
-    <div class="card-icon">✖️</div>
-    <div class="card-subject">数学 · 二年级上册</div>
-    <div class="card-title">二年级上册<br>知识点汇总</div>
-    <div class="card-desc">20 个知识点覆盖人教版二年级上册七大章节：长度单位、加减法、角、表内乘法、观察物体、认识时间、搭配。</div>
-    <div class="card-meta">
-      <span class="tag">20 知识点</span>
-      <span class="tag">闪卡复习</span>
-      <span class="tag">自测小测</span>
-    </div>
-    <div class="card-cta">进入站点</div>
-  </a>
+  </div>
 
-  <!-- 在线考试 -->
-  <a class="card card-exam" href="./exam/">
-    <div class="card-icon">📝</div>
-    <div class="card-subject">数学 · 考试与错题本</div>
-    <div class="card-title">在线考试<br>与错题本</div>
-    <div class="card-desc">12 册题库、4 大知识领域、378 个三级考点，支持自动阅卷、组卷打印、错题本复习与成绩报表，纯前端零依赖。</div>
-    <div class="card-meta">
-      <span class="tag">378 考点</span>
-      <span class="tag">自动阅卷</span>
-      <span class="tag">错题本</span>
-    </div>
-    <div class="card-cta">进入站点</div>
-  </a>
+  <footer class="footer">
+    <hr>
+    <p>纯静态站点，无需注册登录，学习进度保存在本地浏览器。手机上可「添加到主屏幕」当 App 用。</p>
+    <p style="margin-top:8px;">
+      <a href="https://github.com/kailimaliya53-jpg/math" target="_blank" rel="noopener">本站源码（GitHub）</a>
+      &nbsp;·&nbsp;
+      知识点站来自 <a href="https://github.com/JeetChan/mini-classroom" target="_blank" rel="noopener">mini-classroom</a>（MIT）
+      &nbsp;·&nbsp;
+      口算来自 <a href="https://github.com/bosichong/PrimarySchoolMathematics" target="_blank" rel="noopener">PrimarySchoolMathematics</a>（Apache-2.0）
+      &nbsp;·&nbsp;
+      考试平台来自 <a href="https://github.com/scott-lei/exam" target="_blank" rel="noopener">scott-lei/exam</a>
+    </p>
+    <p style="margin-top:8px;">知识点内容按人教版教材目录整理，请对照课本核对后使用。</p>
+  </footer>
 
 </div>
-
-<footer class="footer">
-  <hr class="footer-divider">
-  <p>纯静态站点，无需登录，学习进度保存在本地浏览器。</p>
-  <p style="margin-top:6px;">
-    <a href="https://github.com/kailimaliya53-jpg/math" target="_blank" rel="noopener">本站源码（GitHub）</a>
-    &nbsp;·&nbsp;
-    知识点站来自 <a href="https://github.com/JeetChan/mini-classroom" target="_blank" rel="noopener">mini-classroom</a>（MIT）
-    &nbsp;·&nbsp;
-    口算来自 <a href="https://github.com/bosichong/PrimarySchoolMathematics" target="_blank" rel="noopener">PrimarySchoolMathematics</a>（Apache-2.0）
-    &nbsp;·&nbsp;
-    考试平台来自 <a href="https://github.com/scott-lei/exam" target="_blank" rel="noopener">scott-lei/exam</a>
-  </p>
-</footer>
-
 </body>
 </html>

@@ -1,0 +1,30 @@
+{
+  "name": "一年级上册数学知识点汇总",
+  "short_name": "一年级数学",
+  "description": "根据人教版一年级上册数学教材编写，涵盖准备课、位置、1~5的认识和加减法、认识图形、6~10的认识和加减法、11~20各数的认识、认识钟表、20以内的进位加法八大章节。",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FAFAFA",
+  "theme_color": "#FBBF24",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "education",
+    "books"
+  ],
+  "lang": "zh-CN",
+  "dir": "ltr"
+}

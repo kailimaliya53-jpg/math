@@ -1,0 +1,30 @@
+{
+  "name": "二年级下册数学知识点汇总",
+  "short_name": "二年级数学",
+  "description": "根据人教版二年级下册数学教材编写，涵盖数据收集整理、表内除法、图形的运动、混合运算、有余数的除法、万以内数的认识、克和千克、数学广角八大章节。",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FAFAFA",
+  "theme_color": "#FBBF24",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "education",
+    "books"
+  ],
+  "lang": "zh-CN",
+  "dir": "ltr"
+}
