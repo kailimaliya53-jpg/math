@@ -1,0 +1,29 @@
+:root {}
+
+.page-container {
+  min-height: calc(100vh - 64px - 20px - 20px - 110px);
+}
+
+.p-under {
+  color: #00000073;
+  @apply text-xs;
+
+  i {
+    @apply text-sky-600;
+  }
+}
+
+// 临时修复element plus bug
+// https://github.com/element-plus/element-plus/issues/10919#issuecomment-1499986576
+.el-form--default.el-form--label-right {
+  .el-form-item {
+    display: flex;
+
+    .el-form-item__label {
+      display: inline-flex;
+      margin-bottom: 0px;
+      height: 32px;
+      line-height: 32px;
+    }
+  }
+}

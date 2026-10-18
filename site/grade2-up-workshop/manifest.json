@@ -1,0 +1,17 @@
+{
+  "name": "二年级上册数学知识点汇总",
+  "short_name": "二年级数学",
+  "description": "根据人教版二年级上册数学教材编写，涵盖长度单位、100以内的加法和减法、角的初步认识、表内乘法、观察物体、认识时间、数学广角七大章节。通过闪卡、渐进学习、测试等多种模式，帮助小朋友系统掌握数学知识。",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FAFAFA",
+  "theme_color": "#FBBF24",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "categories": ["education", "books"],
+  "lang": "zh-CN",
+  "dir": "ltr"
+}
