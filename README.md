@@ -111,11 +111,6 @@ node site/drill/check-word.mjs --all      # 应用题：结构检查 + 把答案
 - 人教版各册章节以现行教材目录为准；若你所在地区使用不同版本（如北师大版、苏教版），章节结构需要相应调整。
 - `/drill/` 的口算/竖式题由程序按规则随机生成，算式和答案已用脚本逐个验算（`test-generators.mjs`）；应用题题库是**按人教版各册范围编写**的（150 题，答案里的算式已逐个重算核对），但题目表述仍建议家长/老师抽查后再给孩子用。
 
-## 域名与部署信息
-
-- Cloudflare Pages 项目：`math-classroom`，产线地址 `https://math-classroom.pages.dev`
-- 自定义域名：`math.91stocks.com`（DNS 仍在新网，CNAME 指向 `math-classroom.pages.dev`）
-- 部署方式：`wrangler pages deploy` 直传（未使用 Git 自动构建）
 
 ## 许可证
 
