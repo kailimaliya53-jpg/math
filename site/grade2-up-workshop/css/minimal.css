@@ -122,6 +122,14 @@ img {
   color: var(--color-text);
 }
 
+/* 小屏让导航更紧凑，避免折行 */
+@media (max-width: 640px) {
+  .nav-content { padding: 0 var(--space-1); }
+  .nav-links { gap: var(--space-1); }
+  .nav-link { padding: var(--space-1); font-size: 0.82rem; }
+  .nav-logo { font-size: 1.05rem; }
+}
+
 /* ============ Hero 区 ============ */
 .hero {
   padding: var(--space-7) 0 var(--space-5);

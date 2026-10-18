@@ -68,6 +68,7 @@
         }).join('') +
         '</nav>' +
         '<div class="nav-actions">' +
+        '<a class="btn-icon" href="../" id="btn-home" title="返回数学小教室主页">🏠</a>' +
         '<button class="btn-icon" id="btn-bigfont" title="低年级大字版">Aa</button>' +
         '<button class="btn-icon" id="btn-settings" title="设置">⚙</button>' +
         '<button class="btn-icon nav-toggle" id="btn-nav-toggle" title="菜单">☰</button>' +

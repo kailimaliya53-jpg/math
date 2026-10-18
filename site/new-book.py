@@ -148,6 +148,8 @@ def build(book, origin, force_content=False):
         if not os.path.exists(p):
             continue
         h = io.open(p, encoding='utf-8').read()
+        # 顶部导航第一位加"返回主页"（站群搜索的入口页）
+        h = h.replace('<div class="nav-links">', '<div class="nav-links"><a href="../" class="nav-link">🏠 主页</a>', 1)
         # 标题
         h = re.sub(r'<title>[^<]*</title>', '<title>%s</title>' % page_titles[name], h)
         # meta 描述

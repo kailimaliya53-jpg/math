@@ -1170,3 +1170,11 @@ img {
     font-size: 1.25rem;
   }
 }
+
+/* 小屏导航更紧凑 */
+@media (max-width: 640px) {
+  .nav-content { padding: 0 var(--space-1); }
+  .nav-links { gap: var(--space-1); }
+  .nav-link { padding: var(--space-1); font-size: 0.82rem; }
+  .nav-logo { font-size: 1.05rem; }
+}

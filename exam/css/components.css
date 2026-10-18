@@ -61,6 +61,7 @@
 .btn-icon:hover { border-color: var(--blue-300); color: var(--blue-600); background: var(--blue-50); }
 .btn-icon.on, .btn-icon.active { background: var(--blue-500); border-color: var(--blue-500); color: #fff; }
 .btn-group { display: inline-flex; gap: 8px; flex-wrap: wrap; }
+a.btn-icon { text-decoration: none; }
 
 /* ---------------- 徽章 / 标签 ---------------- */
 .badge {
