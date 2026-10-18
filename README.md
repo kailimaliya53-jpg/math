@@ -35,7 +35,7 @@
 
 脚本做的事：`build-pages.sh` 组装 `pages-dist/` → `wrangler pages deploy` 上传到 Cloudflare Pages 项目 `math-classroom`。
 
-> 网络不通时需要走代理：`export https_proxy=http://127.0.0.1:7899 http_proxy=http://127.0.0.1:7899`
+
 
 ## 目录结构
 
