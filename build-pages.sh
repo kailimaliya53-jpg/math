@@ -46,6 +46,7 @@ cp "$REPO/site/hub.html" "$DIST/index.html"
 cp "$REPO/site/hub.html" "$DIST/hub.html"
 
 echo "▶️  4/6 其它站点"
+rsync -a --exclude 'README.md' --exclude '*.bat' --exclude '*.mjs' "$REPO/site/drill/"          "$DIST/drill/"
 rsync -a --exclude 'README.md' --exclude '*.bat' "$REPO/site/chinese-grade1-site/"     "$DIST/chinese/"
 rsync -a --exclude 'README.md' --exclude '*.bat' "$REPO/site/basic-english-site/"      "$DIST/english-basic/"
 rsync -a --exclude 'README.md' --exclude '*.bat' "$REPO/site/basic-english-workshop/"  "$DIST/english-workshop/"
@@ -99,7 +100,7 @@ import io, os, sys, json, datetime
 dist, origin = sys.argv[1], sys.argv[2]
 books = json.load(io.open(os.path.join(os.path.dirname(dist), 'site', 'books.json'), encoding='utf-8'))['books']
 pages = [('/' + b['outputDir'].strip('/') + '/', '0.9') for b in books]
-pages += [('/', '1.0'), ('/hub', '0.8'), ('/kousuan/', '0.9'), ('/exam/', '0.9'),
+pages += [('/', '1.0'), ('/hub', '0.8'), ('/drill/', '0.9'), ('/kousuan/', '0.9'), ('/exam/', '0.9'),
           ('/chinese/', '0.7'), ('/english-basic/', '0.7'), ('/english-workshop/', '0.7')]
 # 每册的子页面
 sub = [('learn', '0.6'), ('flashcard', '0.6'), ('roots', '0.5'), ('progress', '0.4')]

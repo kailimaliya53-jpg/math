@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>题型专项练习 — 口算卡 · 竖式 · 应用题 | 数学小教室</title>
+<meta name="description" content="人教版小学数学 1~6 年级题型专项练习：口算卡自动出题（计时批改）、竖式排版练习、应用题题库（含答案解析），全部可打印。">
+<meta name="keywords" content="口算卡,口算练习,竖式计算,应用题,小学数学,人教版,一至六年级,练习卷,打印">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://math.91stocks.com/drill/">
+<meta name="theme-color" content="#FBBF24">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✏️</text></svg>">
+<meta property="og:title" content="题型专项练习 — 口算卡 · 竖式 · 应用题">
+<meta property="og:description" content="人教版小学数学 1~6 年级题型专项练习，自动出题、即时批改、可打印。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://math.91stocks.com/drill/">
+<meta property="og:locale" content="zh_CN">
+<link rel="stylesheet" href="css/drill.css">
+</head>
+<body>
+
+<header class="hd">
+  <div class="hd-in">
+    <a class="hd-home" href="../">← 数学小教室</a>
+    <div class="hd-title">题型专项练习<small id="bookLabel"></small></div>
+    <select class="book-select" id="bookSelect" aria-label="选择册次"></select>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="oral" type="button">口算卡</button>
+  <button class="tab" data-tab="vert" type="button">竖式</button>
+  <button class="tab" data-tab="word" type="button">应用题</button>
+</nav>
+
+<div class="wrap">
+
+  <!-- ============ 口算卡 ============ -->
+  <section class="panel" id="panel-oral">
+    <div class="note" id="oralNote"></div>
+    <div class="controls">
+      <label>题量</label>
+      <div class="seg" id="oralCount">
+        <button data-n="10" type="button">10 题</button>
+        <button data-n="20" class="active" type="button">20 题</button>
+        <button data-n="30" type="button">30 题</button>
+        <button data-n="40" type="button">40 题</button>
+      </div>
+      <button class="btn primary" id="oralStart" type="button">开始出题</button>
+      <button class="btn" id="oralSubmit" type="button" disabled>提交批改</button>
+      <button class="btn" id="oralRetry" type="button" hidden>只练错题</button>
+      <span class="spacer"></span>
+      <span class="unit" id="oralTimer">计时 00:00</span>
+    </div>
+    <div class="result" id="oralResult" hidden></div>
+    <div class="print-title" id="oralPrintTitle"></div>
+    <div class="q-list" id="oralList"></div>
+  </section>
+
+  <!-- ============ 竖式 ============ -->
+  <section class="panel" id="panel-vert" hidden>
+    <div class="note" id="vertNote"></div>
+    <div class="controls">
+      <label>题量</label>
+      <div class="seg" id="vertCount">
+        <button data-n="4" type="button">4 题</button>
+        <button data-n="6" class="active" type="button">6 题</button>
+        <button data-n="10" type="button">10 题</button>
+      </div>
+      <button class="btn primary" id="vertStart" type="button">出题</button>
+      <button class="btn" id="vertToggle" type="button">显示答案</button>
+      <button class="btn" id="vertPrint" type="button">打印练习卷</button>
+      <span class="spacer"></span>
+      <span class="unit">在纸上列竖式计算，算完再对照答案</span>
+    </div>
+    <div class="print-title" id="vertPrintTitle"></div>
+    <div class="q-list vertical" id="vertList"></div>
+  </section>
+
+  <!-- ============ 应用题 ============ -->
+  <section class="panel" id="panel-word" hidden>
+    <div class="note" id="wordNote"></div>
+    <div class="controls">
+      <button class="btn primary" id="wordRandom" type="button">随机抽 10 题</button>
+      <button class="btn" id="wordAll" type="button">显示全部答案</button>
+      <button class="btn" id="wordNone" type="button">隐藏全部答案</button>
+      <button class="btn" id="wordPrint" type="button">打印题目</button>
+      <span class="spacer"></span>
+      <span class="unit" id="wordCount"></span>
+    </div>
+    <div class="print-title" id="wordPrintTitle"></div>
+    <div class="q-list word" id="wordList"></div>
+  </section>
+
+  <footer class="footer">
+    <p>出题、批改全部在浏览器本地完成，不联网、不留痕迹。错题建议隔天再练一遍。</p>
+    <p style="margin-top:6px"><a href="../">← 返回数学小教室首页</a></p>
+  </footer>
+</div>
+
+<script src="js/util.js"></script>
+<script src="js/books.js"></script>
+<script src="js/engine.js"></script>
+</body>
+</html>

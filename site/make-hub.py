@@ -21,7 +21,10 @@ GRADE_COLORS = {
     '六年级': ('#B91C1C', '#FEE2E2'),
 }
 EXTRA = [
-    dict(cls='kou', subject='数学 · 口算练习', icon='✏️', title='口算题<br>自动生成',
+    dict(cls='drill', subject='数学 · 题型专项', icon='✏️', title='口算卡 · 竖式<br>应用题专项',
+         desc='按 1~6 年级 12 册分册出题：口算卡自动生成并计时批改，竖式排版可打印练习卷，应用题题库 150 道、含答案与解析。',
+         tags=['自动出题', '计时批改', '可打印'], href='./drill/', color=('#B45309', '#FEF3C7')),
+    dict(cls='kou', subject='数学 · 口算练习', icon='🧮', title='口算题<br>自动生成',
          desc='加减乘除自由出题：运算步数、进退位、余数、结果范围都能调，一键生成可打印的练习卷。',
          tags=['自定义难度', '可打印', '无限出题'], href='./kousuan/', color=('#0F766E', '#CCFBF1')),
     dict(cls='exam', subject='数学 · 考试与错题本', icon='📝', title='在线考试<br>与错题本',

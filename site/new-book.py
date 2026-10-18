@@ -179,8 +179,8 @@ def build(book, origin, force_content=False):
                        '<h2 class="section-title">%s大章节</h2>' % cn_num(len(book['chapters'])), h)
             h = re.sub(r'<p class="footer-desc">[^<]*</p>',
                        '<p class="footer-desc">%s</p>' % (book['description'] + '通过闪卡、渐进学习、测试等多种模式，帮助小朋友系统掌握数学知识。适合家长辅导、学生自学、老师备课使用。'), h)
-            # 底部加"返回全部年级"
-            h = h.replace('<p class="footer-copy">', '<p class="footer-copy"><a href="../">← 返回全部年级</a><br>', 1)
+            # 底部加"返回全部年级 + 题型专项"
+            h = h.replace('<p class="footer-copy">', '<p class="footer-copy"><a href="../">← 返回全部年级</a> · <a href="../drill/?book=%s">题型专项练习（口算 · 竖式 · 应用题）</a><br>' % book['id'], 1)
         # 模板里残留的旧册次文案
         h = h.replace('一年级下册数学知识点汇总', book['siteName'])
         h = h.replace('一年级下册数学', book['grade'] + book['term'] + '数学')
